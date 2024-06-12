@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #c0c0c0; font-family: Arial, Helvetica, sans-serif;">
+    <h1>Este é o jogo do numero secreto</h1>
+    <h1>Escolha um numero ente 0 e 1000</h1>
+    <h1 id="tentativas">Voce tem 10 tentativas</h1>
+    <input type="number" placeholder="Digite um numero" id="chuteInput" value="0">
+    <button id="chutar">Chute</button>
+    <h2 id="chuteText"></h2>
+    <script>
+        const chuteButton = document.getElementById('chutar')
+const chuteText = document.getElementById('chuteText')
+const chuteInput = document.getElementById('chuteInput')
+const numeroSecteto = Math.floor(Math.random()*1000)
+const tentaivasElement = document.getElementById('tentativas')
+let tentaivas = 10
+const chutar=()=>{
+    tentaivas -= 1
+    if(chuteInput.value > numeroSecteto){
+        chuteText.innerText='Menor'
+    }
+    else if(chuteInput.value < numeroSecteto){
+        chuteText.innerText='Maior'
+    }
+    else if(chuteInput.value == numeroSecteto){
+        chuteText.innerText='Voce acertou!!!!'
+    }
+    if(tentaivas <= 0){
+        chuteText.innerText='voce perdeu'
+    }
+    tentaivasElement.innerText = `Voce tem ${tentaivas} tentativas`
+}
+chuteButton.addEventListener('click', chutar)
+document.addEventListener('keydown', (key)=>{
+    if(key.keyCode == 13){
+        chutar()
+    }
+})
+    </script>
+</body>
+</html>
